@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard  {% endblock title %}
+
+{% block body %}
+
+
+
+<div class="container my-3">
+<h1 class="text-center">Welcome to Dashboard</h1>
+
+<div class="container my-5">
+<div class="alert alert-danger" role="alert">
+  <h4 class="text-center">Take a look on your BloggingJourney!</h4>
+</div>
+<table class="table table-secondary table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col" class="text-center">Content</th>
+      <th scope="col">Published On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for blog in blogs %}
+    {% if blog.user_id == request.user %}
+    <tr>
+      <td>{{blog.title}}</td>
+      <td>{{blog.desc|truncatechars:200}}</td>
+      <td>{{blog.date}}</td>
+      <td>
+      <a href="display/{{blog.id}}" class="btn btn-primary">ViewBlog</a>
+      </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<a href="/post_blog" class="btn btn-success">AddBlog</a>
+</div>
+
+{% endblock body %}

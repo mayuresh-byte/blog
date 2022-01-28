@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard  {% endblock title %}
+
+{% block body %}
+
+
+<div class="container my-4">
+
+{% if blogs|length == 0 %}
+ {% load static %}
+<div class="alert alert-danger" role="alert">
+  <h4 class="text-center">Ooops ! Nothing found for {{query}} Try searching diffrent keyword</h4>
+</div>
+
+<div class="container my-4">
+      <img src="{% static 'img/404.png' %}" class = "img-responsive" width = "75%" height="500">
+  </div>
+
+
+{% else %}
+{% for blog in blogs %}
+
+    <div class="alert alert-info" role="alert">
+    <h4 class="text-center">Search Results for '{{ query }}' </h4>
+    </div>
+    <table class="table table-secondary table-hover">
+    <thead class="table-dark">
+        <tr>
+        <th scope="col">Title</th>
+        <th scope="col" class="text-center">Content</th>
+        <th scope="col">Published On</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <td>{{blog.title}}</td>
+      <td>{{blog.desc|truncatechars:200}}</td>
+      <td>{{blog.date}}</td>
+      <td>
+      <a href="display/{{blog.id}}" class="btn btn-primary">ViewBlog</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+{% endfor %}
+{% endif %}
+</div>
+
+{% endblock body %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} PostBlog  {% endblock title %}
+
+{% block style %}
+
+.btn
+  {
+    padding: .375rem 3.75rem;
+  }
+
+{% endblock style %}
+
+{% block body %}
+
+<h2 class="text-center my-2"> Welcome {{request.user}} </h2>
+<div class="container my-3 ">
+<form class="row g-3" action = "post_blog" method="POST">
+{% csrf_token %}
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Title</label>
+  <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="Give a Title to your Blog">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Category</label>
+  <input type="text" class="form-control" name="category" id="exampleFormControlInput1" placeholder="Give a category to your Blog">
+</div>
+<div class="mb-3 ">
+  <label for="exampleFormControlTextarea1" class="form-label">Blog Content</label>
+  <textarea class="form-control" name="content" style="height:300px;" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<div class="col-12  text-center">
+    <button type="submit" class="btn btn-primary" >POST</button>
+</div>
+</form>
+</div>
+
+{% endblock body %}

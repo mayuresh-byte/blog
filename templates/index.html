@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %} BloggerHome  {% endblock title %}
+
+
+{% block body %}
+
+{% load static %}
+<div class="container my-3 ">
+
+  <marquee behavior="scroll" direction="left"><h4>Welcome to Blogger.com scroll down and Explore!</h4></marquee>
+
+
+  <div class="container my-4">
+      <img src="{% static 'img/blogimge.jpg' %}" class = "img-responsive " width = "100%" height="500">
+  </div>
+  <h2 class="text-center my-2">Our Blogs</h2>
+
+<div class="container my-5 w-85">
+{% for blog in blogs%}
+<div class="container my-15">
+<h2 class="my-8 text-center"> CATEGORY:{{blog.0.category|upper}}</h2>
+
+{% for bl in blog  %}
+
+    
+    <table class="table table-secondary table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col" class="text-center">Content</th>
+      <th scope="col">Published On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{bl.title}}</td>
+      <td>{{bl.desc|truncatechars:200}}</td>
+      <td>{{bl.date}}</td>
+      <td>
+      <a href="display/{{bl.id}}" class="btn btn-primary">ViewBlog</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endfor %}
+<hr>
+<hr>
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock body %}

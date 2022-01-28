@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} comment  {% endblock title %}
+
+{% block body %}
+{% load static %}
+
+
+<div class="form-group container my-4 mx-auto">
+<form method="POST">
+{% csrf_token %}
+{{form.as_p}}
+<button class="btn btn-secondary">add comment</button>
+
+</form>
+</div>
+
+{% endblock body %}

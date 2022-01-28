@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} BloggerRegister  {% endblock title %}
+
+{% block body %}
+
+
+
+
+<div class="container"> 
+    <h2 class="text-center"> Register yourself and Explore More </h2>
+    <form class="row g-3" action = "register" method="POST">
+    {% csrf_token %}
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="inputEmail4" name="firstname">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="inputPassword4" name="lastname">
+    </div>
+    
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Username</label>
+        <input type="text" class="form-control" id="inputAddress2" name="username">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputCity" placeholder="@gamil.com" name="email">
+    </div>
+
+    <div class="col-md-6">
+        <label for="inputAddress2" class="form-label">Password</label>
+        <input type="Password" class="form-control" id="inputAddress2" name="password">
+    </div>
+
+    <div class="col-12 mx-auto">
+        <button type="submit" class="btn btn-primary">Register Me</button>
+    </div>
+    </form>
+</div>
+{% endblock body %}
